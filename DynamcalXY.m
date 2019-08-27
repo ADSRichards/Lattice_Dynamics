@@ -13,7 +13,7 @@ black     = [0, 0  , 0  ]/256;
 
 f1 = figure(1); clf; hold on; box on; set(gca, "fontsize", 18)
 
-title("{\bf Harmonic Lattice}","fontsize",24)
+title("{\bf Classical XY}","fontsize",24)
 xlabel("$x$")
 ylabel("$y$")
 
@@ -46,7 +46,7 @@ end
 axis([x1(1,1)-0.5, x1(N1,N2)+0.5, x2(1,1)-0.5, x2(N1,N2)+0.5])
 
 %%
-v0 = 1;
+v0 = 0.5;
 
 v1(2,2) = -v0;
 v2(2,2) = 0;
@@ -75,8 +75,8 @@ v2(4,3) = 0;
 v1(3,4) = -v0;
 v2(3,4) = 0;
 
-TN = 1000;
-FN = 200;
+TN = 3000;
+FN = 600;
 
 w = 1;
 
@@ -85,7 +85,7 @@ F(FN) = getframe(f1);
 fi = 0;
 for ti = 1:TN
     
-    dt = 0.1;
+    dt = 0.02;
 
     F1 = zeros(N1,N2);
     F2 = zeros(N1,N2);
@@ -109,6 +109,9 @@ for ti = 1:TN
 
     S1 = S1 + dt*v1;
     S2 = S2 + dt*v2;
+    
+    S1 = S1./sqrt(S1.^2+S2.^2);
+    S2 = S2./sqrt(S1.^2+S2.^2);
     
     if mod(ti,5)==0 
         fi = fi + 1;
