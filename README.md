@@ -1,6 +1,6 @@
 # Lattice Dynamics
 
-This repository will include dynamical simulations of lattice excitations.
+Simulating the equations of motion for lattice models.
 
 ![](Plots/Harmonic16.gif)
 
